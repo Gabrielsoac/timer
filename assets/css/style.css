@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
 
 :root {
-    --primary-color: rgb(0, 105, 105);
+    --primary-color: rgb(0, 0, 0);
 }
 
 * {
@@ -13,83 +13,68 @@
 }
 
 body {
-    background-color: var(--primary-color)
-}
-
-p {
-    padding: 20px;
-}
-
-table {
-    font-size: 25px;
-}
-
-.main-container {
-
-    max-width: 640px;
-    margin: 50px auto;
-    padding: 100px;
-    background-color: whitesmoke;
-    font-family: Doto, sans-serif;
-    color: black;
-    font-size: 30px;
-    border-radius: 10px;
-}
-
-form input, form label, form button {
-    display: block;
-    width: 90%;
-    margin-bottom: 10px;
-}
-
-form input {
-    font-size: 20px;
-    padding: 10px;
-    height: 50px;
-}
-
-form input:focus {
-    outline: 1px solid var(--primary-color);
-}
-
-form button {
-    border: none;
-    background-color: rgb(0, 42, 156);
-    color: whitesmoke;
-    cursor: pointer;
-    font-size: 30px;
-}
-
-form button:hover {
-    background-color: var(--primary-color);
-}
-
-form button:active {
-    background-color: rgb(128, 124, 124);
-}
-
-form label {
-    color: black;
-}
-
-th, td {
-    padding: 10px
-}
-
-#result {
-    height: 70px;
-    width: 400px;
-    display: flexbox;
+    background-image: linear-gradient(to right top, #000000, #3b3b3b, #777777, #b9b9b9, #ffffff);
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.incorrect-result {
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 92, 92);
+.main-container {
+    font-family: Doto, sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.correct-result {
-    color: rgb(0, 0, 0);
-    background-color: rgb(0, 255, 13);
+#title {
+    font-size: 120px;
+}
+
+.clock {
+    font-size: 150px;
+    color: #ffffff;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items:center;
+    padding: 5px;
+}
+
+.play:hover, .stop:hover, .reset:hover {
+    font-size: 40px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    padding: 2px;
+    margin: 10px;
+    border: 2px solid rgb(117, 117, 117);
+}
+
+.play, .stop, .reset {
+    max-width: 150px;
+    width: 150px;
+    min-width: 150px;
+
+    max-height: 50px;
+    min-height: 50px;
+    height: 50px;
+
+    font-size: 35px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    padding: 2px;
+    margin: 10px;
+}
+
+.stoped {
+    color: rgb(95, 22, 22);
+    font-weight: bold;
 }

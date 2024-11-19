@@ -1,40 +1,45 @@
-//capturar evento do submit
-
-const form = document.getElementById('form');
-const result = document.getElementById('result')
-
-form.addEventListener('submit', function(event){
-    event.preventDefault();
-    result.innerHTML = "";
-
-    const inputPeso = event.target.querySelector('input[name = "peso"]');
-    const inputAltura = event.target.querySelector('input[name = "altura"]');
-    const p = createParagraph();
-
-    if (!inputAltura.value || !inputPeso.value){
-        p.classList.add('incorrect-result');
-        p.innerHTML = "Valores não podem ser vazios"
-        result.appendChild(p);
-    } else if(isNaN(inputPeso.value) || isNaN(inputAltura.value)){
-        p.classList.add('incorrect-result');
-        p.innerHTML = "Por favor, digite apenas números"
-        result.appendChild(p);
-    } else {
-        const peso = Number(inputPeso.value);
-        const altura = Number(inputAltura.value);
-
-        const resultado = calcIMC(peso, altura).toFixed(2);
-
-        p.classList.add('correct-result');
-        p.innerHTML = resultado;
-        result.appendChild(p);
+function clock (){
+    function getDateBySeconds(seconds){
+        return new Date(seconds * 1000).toLocaleTimeString('pt-BR', {
+            hour12: false,
+            timeZone: 'GMT'
+        })
     }
-})
-
-function createParagraph(){
-    return document.createElement('p');
+    let seconds = 0;
+    let timer;
+    function initClock(){
+        timer = setInterval(function() {
+            seconds++;
+            clock.innerHTML = getDateBySeconds(seconds);
+            document.title = getDateBySeconds(seconds);
+        }, 1000);
+    }
+    const clock = document.querySelector(".clock");
+    
+    document.addEventListener('click', function(event){
+        const element = event.target;
+    
+        if(element.classList.contains('play')){
+            clock.classList.remove('stoped');
+            clearInterval(timer)
+            initClock();
+        }
+    
+        if(element.classList.contains('stop')){
+            clock.classList.add('stoped');
+            clearInterval(timer);
+            document.title = 'Paused'
+        }
+    
+        if(element.classList.contains('reset')) {
+            clock.classList.remove('stoped');
+            clearInterval(timer);
+            clock.innerHTML = '00:00:00'
+            seconds = 0;
+            document.title = 'Timer'
+        }
+    })
 }
 
-function calcIMC(peso, altura){
-    return peso / (altura ** 2);
-}
+clock();
+
